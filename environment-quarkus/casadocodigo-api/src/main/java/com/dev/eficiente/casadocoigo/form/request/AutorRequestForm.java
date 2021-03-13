@@ -3,6 +3,7 @@ package com.dev.eficiente.casadocoigo.form.request;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import com.dev.eficiente.casadocoigo.model.Autor;
+import com.dev.eficiente.casadocoigo.validations.EmailAutor;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class AutorRequestForm {
@@ -10,8 +11,8 @@ public class AutorRequestForm {
   @NotBlank
   private String nome;
 
-  @NotBlank
-  @Email
+ 
+  @EmailAutor
   private String email;
 
   @NotBlank

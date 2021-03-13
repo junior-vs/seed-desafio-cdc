@@ -1,6 +1,5 @@
 package com.dev.eficiente.casadocoigo.resources;
 
-import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -8,12 +7,11 @@ import javax.validation.Valid;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
-import com.dev.eficiente.casadocoigo.form.request.AutorRequestForm;
-import com.dev.eficiente.casadocoigo.model.Autor;
+import com.dev.eficiente.casadocoigo.form.request.CategoriaRequestForm;
+import com.dev.eficiente.casadocoigo.model.Categoria;
 
-@Path("/autores")
-@ApplicationScoped
-public class AutorResource {
+@Path("/categorias")
+public class CategoriaResource {
 
   @PersistenceContext
   private EntityManager manager;
@@ -21,13 +19,13 @@ public class AutorResource {
 
   @POST
   @Transactional
-  public Response criaAutor(@Valid AutorRequestForm autor) {
+  public Response create(@Valid CategoriaRequestForm novaCategoria) {
 
-    Autor entity = autor.map();
+    Categoria entity = novaCategoria.map();
     manager.persist(entity);
 
-    return Response.ok(autor).build();
 
+    return Response.ok(novaCategoria).build();
   }
 
 }

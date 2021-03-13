@@ -25,7 +25,7 @@ public class Autor {
     this.email = email;
     this.descricao = descricao;
   }
-  
+
   /**
    * Construtor criado para atendender Hibernate
    */
