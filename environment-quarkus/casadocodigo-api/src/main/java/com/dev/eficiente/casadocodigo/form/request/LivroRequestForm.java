@@ -16,7 +16,11 @@ import com.dev.eficiente.casadocodigo.validations.CategoriaValido;
 import com.dev.eficiente.casadocodigo.validations.ISBNUnico;
 import com.dev.eficiente.casadocodigo.validations.TituloLivroUnico;
 import com.fasterxml.jackson.annotation.JsonCreator;
-
+/**
+ * CDD 3
+ * @author Valdir Junior
+ *
+ */
 public class LivroRequestForm {
 
   @TituloLivroUnico
@@ -70,7 +74,6 @@ public class LivroRequestForm {
     this.idCategoria = idCategoria;
     this.idAutor = idAutor;
   }
-
 
 
   public String getTitulo() {

@@ -3,7 +3,6 @@
  */
 package com.dev.eficiente.casadocodigo.resources;
 
-import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.enterprise.context.RequestScoped;
@@ -23,40 +22,40 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
-import com.dev.eficiente.casadocodigo.form.request.LivroRequestForm;
-import com.dev.eficiente.casadocodigo.form.vo.LivroVO;
-import com.dev.eficiente.casadocodigo.model.Livro;
+import com.dev.eficiente.casadocodigo.form.request.PaisRequestForm;
+import com.dev.eficiente.casadocodigo.form.vo.PaisVO;
+import com.dev.eficiente.casadocodigo.model.Pais;
 
 /**
  * @author Valdir Junior
  *
- * CDD 2
  */
 @RequestScoped
-@Path("/livros")
-public class LivroRequestFormEndpoint {
+@Path("/paises")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
+public class PaisEndpoint {
 
   @PersistenceContext
   EntityManager manager;
 
   /**
-   * @param livrorequestform
+   * @param paisrequestform
    * @return
-   * 
    */
   @POST
-  @Transactional
   @Produces(MediaType.APPLICATION_JSON)
   @Consumes(MediaType.APPLICATION_JSON)
-  public Response create(@Valid final LivroRequestForm livro) {
+  @Transactional
+  public Response create(@Valid final PaisRequestForm paisrequestform) {
 
-    Livro entity = livro.map(manager);
-    manager.persist(entity);
+    Pais pais = paisrequestform.map();
+    manager.persist(pais);
 
-    URI uri = UriBuilder.fromResource(LivroRequestFormEndpoint.class)
-        .path(String.valueOf(entity.getId())).build();
-
-    return Response.created(uri).entity(livro).build();
+    return Response
+        .created(
+            UriBuilder.fromResource(PaisEndpoint.class).path(String.valueOf(pais.getId())).build())
+        .build();
   }
 
   /**
@@ -66,11 +65,11 @@ public class LivroRequestFormEndpoint {
   @GET
   @Path("/{id:[0-9][0-9]*}")
   public Response findById(@PathParam("id") final Integer id) {
-    Livro found = manager.find(Livro.class, id);
+    Pais found = manager.find(Pais.class, id);
     if (found == null) {
       return Response.status(Status.NOT_FOUND).build();
     }
-    return Response.ok(new LivroVO(found)).build();
+    return Response.ok(new PaisVO(found)).build();
   }
 
   /**
@@ -78,17 +77,16 @@ public class LivroRequestFormEndpoint {
    * @param maxResult
    * @return
    */
+  @SuppressWarnings("unchecked")
   @GET
   public Response listAll(@QueryParam("start") final Integer startPosition,
       @QueryParam("max") final Integer maxResult) {
 
-    Query query = manager.createQuery("Select l from Livro l");
-    List<Livro> resultList = query.getResultList();
+    Query createQuery = manager.createQuery("SELECT p FROM Pais p");
+    List<Pais> resultList = createQuery.getResultList();
+    final List<PaisVO> vos = resultList.stream().map(PaisVO::new).collect(Collectors.toList());
 
-    final List<LivroVO> livrosvo =
-        resultList.stream().map(LivroVO::new).collect(Collectors.toList());
-    
-    return Response.ok(livrosvo).build();
+    return Response.ok(vos).build();
   }
 
 }

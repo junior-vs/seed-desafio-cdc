@@ -13,7 +13,7 @@ public class EmailAutorValidation implements ConstraintValidator<EmailAutor, Str
 
 
   @PersistenceContext
-  private EntityManager manager;
+  EntityManager manager;
 
   @Override
   public boolean isValid(String value, ConstraintValidatorContext context) {

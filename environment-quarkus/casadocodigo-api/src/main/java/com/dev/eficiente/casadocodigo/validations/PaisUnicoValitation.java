@@ -9,8 +9,7 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 @ApplicationScoped
-public class TituloLivroUnicoValidation implements ConstraintValidator<TituloLivroUnico, String> {
-
+public class PaisUnicoValitation implements ConstraintValidator<PaisUnico, String> {
 
   @PersistenceContext
   EntityManager manager;
@@ -19,7 +18,7 @@ public class TituloLivroUnicoValidation implements ConstraintValidator<TituloLiv
   public boolean isValid(String value, ConstraintValidatorContext context) {
 
 
-    String select = "SELECT 1 FROM Livro v WHERE v.titulo = :value";
+    String select = "SELECT 1 FROM Pais p WHERE p.nome = :value";
 
     Query query = manager.createQuery(select);
     query.setParameter("value", value);
@@ -28,5 +27,4 @@ public class TituloLivroUnicoValidation implements ConstraintValidator<TituloLiv
     return resultList.isEmpty();
 
   }
-
 }

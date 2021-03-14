@@ -14,7 +14,7 @@ public class CategoriaUnicaValitation implements ConstraintValidator<CategoriaUn
 
 
   @PersistenceContext
-  private EntityManager manager;
+  EntityManager manager;
 
   @Override
   public boolean isValid(String value, ConstraintValidatorContext context) {

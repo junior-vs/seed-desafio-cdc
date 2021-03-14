@@ -31,9 +31,9 @@ public class Livro {
   private @NotBlank String isbn;
   private @PastOrPresent LocalDate dtPublicacao;
   @ManyToOne
-  private Categoria categoriaEntity;
+  private Categoria categoria;
   @ManyToOne
-  private Autor autorEntity;
+  private Autor autor;
 
   /**
    * Construtor criado para atender Hibernate
@@ -45,8 +45,8 @@ public class Livro {
 
   public Livro(@NotBlank String titulo, @NotBlank @Max(value = 500) String resumo,
       @NotBlank String sumario, @NotNull @Min(20) BigDecimal preco, @Min(100) Integer numeroPagina,
-      @NotBlank String isbn, @PastOrPresent LocalDate dtPublicacao, Categoria categoriaEntity,
-      Autor autorEntity) {
+      @NotBlank String isbn, @PastOrPresent LocalDate dtPublicacao, Categoria categoria,
+      Autor autor) {
     this.titulo = titulo;
     this.resumo = resumo;
     this.sumario = sumario;
@@ -54,12 +54,50 @@ public class Livro {
     this.numeroPagina = numeroPagina;
     this.isbn = isbn;
     this.dtPublicacao = dtPublicacao;
-    this.categoriaEntity = categoriaEntity;
-    this.autorEntity = autorEntity;
+    this.categoria = categoria;
+    this.autor = autor;
   }
 
   public Integer getId() {
     return id;
   }
+
+  public String getTitulo() {
+    return titulo;
+  }
+
+  public String getResumo() {
+    return resumo;
+  }
+
+  public String getSumario() {
+    return sumario;
+  }
+
+  public BigDecimal getPreco() {
+    return preco;
+  }
+
+  public Integer getNumeroPagina() {
+    return numeroPagina;
+  }
+
+  public String getIsbn() {
+    return isbn;
+  }
+
+  public LocalDate getDtPublicacao() {
+    return dtPublicacao;
+  }
+
+  public Categoria getCategoria() {
+    return categoria;
+  }
+
+  public Autor getAutor() {
+    return autor;
+  }
+
+
 
 }

@@ -16,7 +16,7 @@ import com.dev.eficiente.casadocodigo.model.Autor;
 public class AutorResource {
 
   @PersistenceContext
-  private EntityManager manager;
+  EntityManager manager;
 
 
   @POST

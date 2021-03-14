@@ -11,7 +11,7 @@ import com.dev.eficiente.casadocodigo.model.Categoria;
 public class CategoriaValidoValidation implements ConstraintValidator<CategoriaValido, Integer> {
 
   @PersistenceContext
-  private EntityManager manager;
+  EntityManager manager;
 
   @Override
   public boolean isValid(Integer value, ConstraintValidatorContext context) {

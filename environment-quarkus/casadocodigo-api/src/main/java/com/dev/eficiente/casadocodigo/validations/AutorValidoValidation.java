@@ -11,7 +11,7 @@ import com.dev.eficiente.casadocodigo.model.Autor;
 public class AutorValidoValidation implements ConstraintValidator<AutorValido, Integer> {
 
   @PersistenceContext
-  private EntityManager manager;
+  EntityManager manager;
 
   @Override
   public boolean isValid(Integer value, ConstraintValidatorContext context) {

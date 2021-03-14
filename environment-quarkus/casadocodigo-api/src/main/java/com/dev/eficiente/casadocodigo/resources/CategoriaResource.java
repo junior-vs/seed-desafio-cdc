@@ -14,7 +14,7 @@ import com.dev.eficiente.casadocodigo.model.Categoria;
 public class CategoriaResource {
 
   @PersistenceContext
-  private EntityManager manager;
+  EntityManager manager;
 
 
   @POST

@@ -12,7 +12,7 @@ import javax.validation.ConstraintValidatorContext;
 public class ISBNUnicoValidation implements ConstraintValidator<ISBNUnico, String> {
 
   @PersistenceContext
-  private EntityManager manager;
+  EntityManager manager;
 
   @Override
   public boolean isValid(String value, ConstraintValidatorContext context) {
