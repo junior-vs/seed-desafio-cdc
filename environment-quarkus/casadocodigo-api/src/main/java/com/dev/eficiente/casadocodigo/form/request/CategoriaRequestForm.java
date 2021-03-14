@@ -1,7 +1,7 @@
-package com.dev.eficiente.casadocoigo.form.request;
+package com.dev.eficiente.casadocodigo.form.request;
 
-import com.dev.eficiente.casadocoigo.model.Categoria;
-import com.dev.eficiente.casadocoigo.validations.CategoriaUnica;
+import com.dev.eficiente.casadocodigo.model.Categoria;
+import com.dev.eficiente.casadocodigo.validations.CategoriaUnica;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class CategoriaRequestForm {

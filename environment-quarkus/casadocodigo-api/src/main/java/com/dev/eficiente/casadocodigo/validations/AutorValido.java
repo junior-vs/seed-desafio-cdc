@@ -1,4 +1,4 @@
-package com.dev.eficiente.casadocoigo.validations;
+package com.dev.eficiente.casadocodigo.validations;
 
 import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
 import static java.lang.annotation.ElementType.CONSTRUCTOR;
@@ -12,32 +12,23 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 
-@Email
-@NotBlank
 @Documented
 @Retention(RUNTIME)
-@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
-@Constraint(validatedBy = EmailAutorValidation.class)
-public @interface EmailAutor {
+@Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
+@Constraint(validatedBy = AutorValidoValidation.class)
+public @interface AutorValido {
 
-
-
-  String message() default "Email do Autor ja existe da base";
+  String message() default "Autor não é valido";
 
   Class<?>[] groups() default {};
 
   Class<? extends Payload>[] payload() default {};
 
-
   @Documented
   @Retention(RUNTIME)
-  @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
+  @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
   @interface List {
-
-    EmailAutor[] value();
+    CategoriaValido[] value();
   }
-
 }

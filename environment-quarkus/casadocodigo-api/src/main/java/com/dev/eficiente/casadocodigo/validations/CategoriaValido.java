@@ -1,4 +1,4 @@
-package com.dev.eficiente.casadocoigo.validations;
+package com.dev.eficiente.casadocodigo.validations;
 
 import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
 import static java.lang.annotation.ElementType.CONSTRUCTOR;
@@ -12,30 +12,23 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
-import javax.validation.constraints.NotBlank;
 
-@NotBlank
 @Documented
 @Retention(RUNTIME)
 @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
-@Constraint(validatedBy = CategoriaUnicaValitarion.class)
+@Constraint(validatedBy = CategoriaValidoValidation.class)
+public @interface CategoriaValido {
 
-public @interface CategoriaUnica {
-
-
-  String message() default "Categoria ja existe da base";
+  String message() default "Categoria não é valido";
 
   Class<?>[] groups() default {};
 
   Class<? extends Payload>[] payload() default {};
 
-
   @Documented
   @Retention(RUNTIME)
   @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
   @interface List {
-
-    CategoriaUnica[] value();
+    CategoriaValido[] value();
   }
-
 }

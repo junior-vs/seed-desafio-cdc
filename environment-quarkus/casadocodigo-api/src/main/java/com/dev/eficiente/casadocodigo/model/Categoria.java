@@ -1,4 +1,4 @@
-package com.dev.eficiente.casadocoigo.model;
+package com.dev.eficiente.casadocodigo.model;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Column;

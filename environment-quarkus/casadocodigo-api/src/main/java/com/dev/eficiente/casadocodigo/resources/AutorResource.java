@@ -1,4 +1,4 @@
-package com.dev.eficiente.casadocoigo.resources;
+package com.dev.eficiente.casadocodigo.resources;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
@@ -8,8 +8,8 @@ import javax.validation.Valid;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
-import com.dev.eficiente.casadocoigo.form.request.AutorRequestForm;
-import com.dev.eficiente.casadocoigo.model.Autor;
+import com.dev.eficiente.casadocodigo.form.request.AutorRequestForm;
+import com.dev.eficiente.casadocodigo.model.Autor;
 
 @Path("/autores")
 @ApplicationScoped

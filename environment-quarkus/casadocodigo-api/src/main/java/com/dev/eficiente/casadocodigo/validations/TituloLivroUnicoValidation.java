@@ -1,4 +1,4 @@
-package com.dev.eficiente.casadocoigo.validations;
+package com.dev.eficiente.casadocodigo.validations;
 
 import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
@@ -8,9 +8,8 @@ import javax.persistence.Query;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-
 @ApplicationScoped
-public class CategoriaUnicaValitarion implements ConstraintValidator<CategoriaUnica, String> {
+public class TituloLivroUnicoValidation implements ConstraintValidator<TituloLivroUnico, String> {
 
 
   @PersistenceContext
@@ -20,7 +19,7 @@ public class CategoriaUnicaValitarion implements ConstraintValidator<CategoriaUn
   public boolean isValid(String value, ConstraintValidatorContext context) {
 
 
-    String select = "SELECT 1 FROM Categoria c WHERE c.nome = :value";
+    String select = "SELECT 1 FROM Livro v WHERE v.titulo = :value";
 
     Query query = manager.createQuery(select);
     query.setParameter("value", value);

@@ -1,4 +1,4 @@
-package com.dev.eficiente.casadocoigo.model;
+package com.dev.eficiente.casadocodigo.model;
 
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Entity;
@@ -14,7 +14,7 @@ public class Autor {
   @Id
   @GeneratedValue(generator = "AUTOR_SEQ_ID", strategy = IDENTITY)
   @SequenceGenerator(allocationSize = 1, name = "AUTOR_SEQ_ID", sequenceName = "AUTOR_SEQ_ID")
-  private Long id;
+  private Integer id;
 
   private @NotBlank String nome;
   private @NotBlank @Email String email;
