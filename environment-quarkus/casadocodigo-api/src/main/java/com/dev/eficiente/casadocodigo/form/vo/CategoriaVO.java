@@ -5,11 +5,18 @@ import com.dev.eficiente.casadocodigo.validations.CategoriaUnica;
 
 public class CategoriaVO implements Comparable<CategoriaVO> {
 
+  private Integer id;
+
   @CategoriaUnica
   private String nome;
 
   public CategoriaVO(Categoria categoria) {
+    this.id = categoria.getId();
     this.nome = categoria.getNome();
+  }
+
+  public Integer getId() {
+    return id;
   }
 
   public String getNome() {

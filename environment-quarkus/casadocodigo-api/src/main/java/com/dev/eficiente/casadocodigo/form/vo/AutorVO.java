@@ -6,6 +6,8 @@ import com.dev.eficiente.casadocodigo.validations.EmailAutor;
 
 public class AutorVO implements Comparable<AutorVO> {
 
+  private Integer id;
+
   @NotBlank
   private String nome;
 
@@ -18,11 +20,15 @@ public class AutorVO implements Comparable<AutorVO> {
 
 
   public AutorVO(Autor autor) {
+    this.id = autor.getId();
     this.nome = autor.getNome();
     this.email = autor.getEmail();
     this.descricao = autor.getDescricao();
   }
 
+  public Integer getId() {
+      return id;
+  }
 
   public String getNome() {
     return nome;
