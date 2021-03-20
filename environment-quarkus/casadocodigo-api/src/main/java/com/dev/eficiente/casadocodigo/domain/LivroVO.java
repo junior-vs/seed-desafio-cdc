@@ -1,4 +1,4 @@
-package com.dev.eficiente.casadocodigo.form.vo;
+package com.dev.eficiente.casadocodigo.domain;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -12,6 +12,7 @@ import com.dev.eficiente.casadocodigo.validations.AutorValido;
 import com.dev.eficiente.casadocodigo.validations.CategoriaValido;
 import com.dev.eficiente.casadocodigo.validations.ISBNUnico;
 import com.dev.eficiente.casadocodigo.validations.TituloLivroUnico;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class LivroVO implements Comparable<LivroVO> {
 
@@ -40,6 +41,7 @@ public class LivroVO implements Comparable<LivroVO> {
   private String isbn;
 
   @PastOrPresent
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   private LocalDate publicacao;
 
   // TemQExistir

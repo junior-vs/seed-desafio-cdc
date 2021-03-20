@@ -17,7 +17,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
-import com.dev.eficiente.casadocodigo.form.request.EstadoRequestForm;
+import com.dev.eficiente.casadocodigo.form.EstadoRequestForm;
 import com.dev.eficiente.casadocodigo.model.Estado;
 
 /**
@@ -26,7 +26,7 @@ import com.dev.eficiente.casadocodigo.model.Estado;
  */
 @RequestScoped
 @Path("/estados")
-public class EstadoEndpoint {
+public class EstadoResource {
 
   @PersistenceContext
   EntityManager manager;
@@ -43,7 +43,7 @@ public class EstadoEndpoint {
     manager.persist(estado);
 
     return Response.created(
-        UriBuilder.fromResource(EstadoEndpoint.class).path(String.valueOf(estado.getId())).build())
+        UriBuilder.fromResource(EstadoResource.class).path(String.valueOf(estado.getId())).build())
         .build();
   }
 

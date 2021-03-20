@@ -16,6 +16,10 @@ public class EstadoUnicoValidation implements ConstraintValidator<EstadoUnico, S
 
   @Override
   public boolean isValid(String value, ConstraintValidatorContext context) {
+    
+    if(value == null)
+      return true;
+    
 
     String select = "SELECT 1 FROM Estado e WHERE e.nome = :value";
 

@@ -17,6 +17,10 @@ public class PaisUnicoValitation implements ConstraintValidator<PaisUnico, Strin
   @Override
   public boolean isValid(String value, ConstraintValidatorContext context) {
 
+    if (value == null)
+      return true;
+
+
 
     String select = "SELECT 1 FROM Pais p WHERE p.nome = :value";
 

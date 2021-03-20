@@ -1,18 +1,20 @@
-package com.dev.eficiente.casadocodigo.form.vo;
+package com.dev.eficiente.casadocodigo.domain;
 
-import com.dev.eficiente.casadocodigo.model.Categoria;
-import com.dev.eficiente.casadocodigo.validations.CategoriaUnica;
+import javax.validation.constraints.NotBlank;
+import com.dev.eficiente.casadocodigo.model.Pais;
+import com.dev.eficiente.casadocodigo.validations.PaisUnico;
 
-public class CategoriaVO implements Comparable<CategoriaVO> {
+public class PaisVO implements Comparable<PaisVO> {
 
   private Integer id;
 
-  @CategoriaUnica
+  @NotBlank
+  @PaisUnico
   private String nome;
 
-  public CategoriaVO(Categoria categoria) {
-    this.id = categoria.getId();
-    this.nome = categoria.getNome();
+  public PaisVO(Pais pais) {
+    this.id = pais.getId();
+    this.nome = pais.getNome();
   }
 
   public Integer getId() {
@@ -21,11 +23,6 @@ public class CategoriaVO implements Comparable<CategoriaVO> {
 
   public String getNome() {
     return nome;
-  }
-
-  @Override
-  public String toString() {
-    return String.format("CategoriaVO [nome=%s]", nome);
   }
 
   @Override
@@ -44,7 +41,7 @@ public class CategoriaVO implements Comparable<CategoriaVO> {
       return false;
     if (getClass() != obj.getClass())
       return false;
-    CategoriaVO other = (CategoriaVO) obj;
+    PaisVO other = (PaisVO) obj;
     if (nome == null) {
       if (other.nome != null)
         return false;
@@ -54,10 +51,14 @@ public class CategoriaVO implements Comparable<CategoriaVO> {
   }
 
   @Override
-  public int compareTo(CategoriaVO o) {
+  public int compareTo(PaisVO o) {
     return this.nome.compareToIgnoreCase(o.getNome());
   }
 
+  @Override
+  public String toString() {
+    return String.format("PaisVO [id=%s, nome=%s]", id, nome);
+  }
 
 
 }

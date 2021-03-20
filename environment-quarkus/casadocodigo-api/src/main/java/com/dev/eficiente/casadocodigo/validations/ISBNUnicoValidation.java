@@ -16,6 +16,10 @@ public class ISBNUnicoValidation implements ConstraintValidator<ISBNUnico, Strin
 
   @Override
   public boolean isValid(String value, ConstraintValidatorContext context) {
+    
+    
+    if(value == null)
+      return true;
 
 
     String select = "SELECT 1 FROM Livro l WHERE l.isbn = :value";

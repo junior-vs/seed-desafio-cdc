@@ -1,4 +1,4 @@
-package com.dev.eficiente.casadocodigo.form.vo;
+package com.dev.eficiente.casadocodigo.domain;
 
 import javax.validation.constraints.NotBlank;
 import com.dev.eficiente.casadocodigo.model.Autor;

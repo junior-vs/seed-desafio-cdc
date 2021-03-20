@@ -5,21 +5,22 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-import com.dev.eficiente.casadocodigo.model.Autor;
+import com.dev.eficiente.casadocodigo.model.Estado;
 
 @ApplicationScoped
-public class AutorValidoValidation implements ConstraintValidator<AutorValido, Integer> {
+public class EstadoValidoValidation implements ConstraintValidator<EstadoValido, Integer> {
 
   @PersistenceContext
   EntityManager manager;
 
+
   @Override
   public boolean isValid(Integer value, ConstraintValidatorContext context) {
-    if(value == null)
-      return true;
-    
-    Autor found = manager.find(Autor.class, value);
-    return found != null;
-  }
 
+    if (value == null)
+      return true;
+
+    Estado fond = manager.find(Estado.class, value);
+    return fond != null;
+  }
 }

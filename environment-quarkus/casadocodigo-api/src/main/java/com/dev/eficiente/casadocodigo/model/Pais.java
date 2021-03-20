@@ -30,6 +30,10 @@ public class Pais {
     // Auto-generated constructor stub
   }
 
+  public Pais(Integer id) {
+    this.id = id;
+  }
+
   public Integer getId() {
     return id;
   }

@@ -1,4 +1,4 @@
-package com.dev.eficiente.casadocodigo.form.request;
+package com.dev.eficiente.casadocodigo.form;
 
 import com.dev.eficiente.casadocodigo.model.Categoria;
 import com.dev.eficiente.casadocodigo.validations.CategoriaUnica;

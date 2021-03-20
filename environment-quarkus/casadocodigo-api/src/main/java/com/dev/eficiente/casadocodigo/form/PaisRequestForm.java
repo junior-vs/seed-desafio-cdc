@@ -1,4 +1,4 @@
-package com.dev.eficiente.casadocodigo.form.request;
+package com.dev.eficiente.casadocodigo.form;
 
 import javax.validation.constraints.NotBlank;
 import com.dev.eficiente.casadocodigo.model.Pais;

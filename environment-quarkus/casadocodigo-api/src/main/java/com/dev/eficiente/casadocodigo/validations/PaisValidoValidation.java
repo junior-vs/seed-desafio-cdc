@@ -1,4 +1,4 @@
-package com.dev.eficiente.casadocodigo.form.request;
+package com.dev.eficiente.casadocodigo.validations;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
@@ -16,6 +16,10 @@ public class PaisValidoValidation implements ConstraintValidator<PaisValido, Int
 
   @Override
   public boolean isValid(Integer value, ConstraintValidatorContext context) {
+    
+    if(value ==null)
+      return true;
+    
     Pais fond = manager.find(Pais.class, value);
     return fond != null;
   }

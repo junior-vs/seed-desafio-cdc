@@ -23,8 +23,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
-import com.dev.eficiente.casadocodigo.form.request.LivroRequestForm;
-import com.dev.eficiente.casadocodigo.form.vo.LivroVO;
+import com.dev.eficiente.casadocodigo.domain.LivroVO;
+import com.dev.eficiente.casadocodigo.form.LivroRequestForm;
 import com.dev.eficiente.casadocodigo.model.Livro;
 
 /**
@@ -34,7 +34,7 @@ import com.dev.eficiente.casadocodigo.model.Livro;
  */
 @RequestScoped
 @Path("/livros")
-public class LivroRequestFormEndpoint {
+public class LivroResource {
 
   @PersistenceContext
   EntityManager manager;
@@ -50,13 +50,13 @@ public class LivroRequestFormEndpoint {
   @Consumes(MediaType.APPLICATION_JSON)
   public Response create(@Valid final LivroRequestForm livro) {
 
-    Livro entity = livro.map(manager);
-    manager.persist(entity);
+    Livro livroEntity = livro.map(manager);
+    manager.persist(livroEntity);
 
-    URI uri = UriBuilder.fromResource(LivroRequestFormEndpoint.class)
-        .path(String.valueOf(entity.getId())).build();
+    URI uri = UriBuilder.fromResource(LivroResource.class)
+        .path(String.valueOf(livroEntity.getId())).build();
 
-    return Response.created(uri).entity(livro).build();
+    return Response.created(uri).entity(new LivroVO(livroEntity)).build();
   }
 
   /**

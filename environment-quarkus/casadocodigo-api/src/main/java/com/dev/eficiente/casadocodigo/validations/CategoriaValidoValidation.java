@@ -15,6 +15,11 @@ public class CategoriaValidoValidation implements ConstraintValidator<CategoriaV
 
   @Override
   public boolean isValid(Integer value, ConstraintValidatorContext context) {
+    
+    if(value == null)
+      return true;
+    
+    
     Categoria found = manager.find(Categoria.class, value);
     return found != null;
   }

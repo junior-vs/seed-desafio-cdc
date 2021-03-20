@@ -17,6 +17,9 @@ public class EmailAutorValidation implements ConstraintValidator<EmailAutor, Str
 
   @Override
   public boolean isValid(String value, ConstraintValidatorContext context) {
+    
+    if(value == null)
+      return true;
 
 
     String select = "SELECT 1 FROM Autor a WHERE a.email = :value";

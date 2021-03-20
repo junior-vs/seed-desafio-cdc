@@ -19,6 +19,8 @@ public class CategoriaUnicaValitation implements ConstraintValidator<CategoriaUn
   @Override
   public boolean isValid(String value, ConstraintValidatorContext context) {
 
+    if(value == null)
+      return true;
 
     String select = "SELECT 1 FROM Categoria c WHERE c.nome = :value";
 

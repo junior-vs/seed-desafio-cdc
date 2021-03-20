@@ -1,4 +1,4 @@
-package com.dev.eficiente.casadocodigo.form.request;
+package com.dev.eficiente.casadocodigo.form;
 
 import javax.persistence.EntityManager;
 import javax.validation.constraints.NotBlank;
@@ -6,6 +6,7 @@ import javax.validation.constraints.NotNull;
 import com.dev.eficiente.casadocodigo.model.Estado;
 import com.dev.eficiente.casadocodigo.model.Pais;
 import com.dev.eficiente.casadocodigo.validations.EstadoUnico;
+import com.dev.eficiente.casadocodigo.validations.PaisValido;
 
 public class EstadoRequestForm {
 

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.dev.eficiente.casadocodigo.form.request;
+package com.dev.eficiente.casadocodigo.validations;
 
 import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
 import static java.lang.annotation.ElementType.CONSTRUCTOR;
@@ -15,7 +15,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
-import com.dev.eficiente.casadocodigo.validations.EstadoUnico;
 
 /**
  * @author Valdir Junior

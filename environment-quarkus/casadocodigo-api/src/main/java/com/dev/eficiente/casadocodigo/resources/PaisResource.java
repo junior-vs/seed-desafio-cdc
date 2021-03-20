@@ -22,8 +22,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
-import com.dev.eficiente.casadocodigo.form.request.PaisRequestForm;
-import com.dev.eficiente.casadocodigo.form.vo.PaisVO;
+import com.dev.eficiente.casadocodigo.domain.PaisVO;
+import com.dev.eficiente.casadocodigo.form.PaisRequestForm;
 import com.dev.eficiente.casadocodigo.model.Pais;
 
 /**
@@ -34,7 +34,7 @@ import com.dev.eficiente.casadocodigo.model.Pais;
 @Path("/paises")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class PaisEndpoint {
+public class PaisResource {
 
   @PersistenceContext
   EntityManager manager;
@@ -54,7 +54,7 @@ public class PaisEndpoint {
 
     return Response
         .created(
-            UriBuilder.fromResource(PaisEndpoint.class).path(String.valueOf(pais.getId())).build())
+            UriBuilder.fromResource(PaisResource.class).path(String.valueOf(pais.getId())).build())
         .build();
   }
 

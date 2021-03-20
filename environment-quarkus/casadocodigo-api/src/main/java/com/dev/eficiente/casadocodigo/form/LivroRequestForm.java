@@ -1,4 +1,4 @@
-package com.dev.eficiente.casadocodigo.form.request;
+package com.dev.eficiente.casadocodigo.form;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -16,6 +16,7 @@ import com.dev.eficiente.casadocodigo.validations.CategoriaValido;
 import com.dev.eficiente.casadocodigo.validations.ISBNUnico;
 import com.dev.eficiente.casadocodigo.validations.TituloLivroUnico;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
 /**
  * CDD 3
  * @author Valdir Junior
@@ -45,6 +46,7 @@ public class LivroRequestForm {
   private String isbn;
 
   @PastOrPresent
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
   private LocalDate publicacao;
 
   // TemQExistir

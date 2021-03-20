@@ -14,8 +14,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-import com.dev.eficiente.casadocodigo.form.request.CategoriaRequestForm;
-import com.dev.eficiente.casadocodigo.form.vo.CategoriaVO;
+import com.dev.eficiente.casadocodigo.domain.CategoriaVO;
+import com.dev.eficiente.casadocodigo.form.CategoriaRequestForm;
 import com.dev.eficiente.casadocodigo.model.Categoria;
 
 @Path("/categorias")

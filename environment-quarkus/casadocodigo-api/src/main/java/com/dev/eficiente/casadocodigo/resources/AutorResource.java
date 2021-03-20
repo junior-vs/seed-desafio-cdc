@@ -15,8 +15,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-import com.dev.eficiente.casadocodigo.form.request.AutorRequestForm;
-import com.dev.eficiente.casadocodigo.form.vo.AutorVO;
+import com.dev.eficiente.casadocodigo.domain.AutorVO;
+import com.dev.eficiente.casadocodigo.form.AutorRequestForm;
 import com.dev.eficiente.casadocodigo.model.Autor;
 
 @Path("/autores")
