@@ -63,5 +63,18 @@ public class ItemPedido {
   }
 
 
+  public Livro getLivro() {
+    return livro;
+  }
+
+  public int getQuantidade() {
+    return quantidade;
+  }
+
+  public BigDecimal getPrecoDoMomento() {
+    return precoDoMomento;
+  }
+
+
 
 }

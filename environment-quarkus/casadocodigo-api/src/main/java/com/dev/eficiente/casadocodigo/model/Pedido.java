@@ -51,5 +51,30 @@ public class Pedido {
     return String.format("Pedido [id=%s, total=%s, itensColetados=%s]", id, total, itensColetados);
   }
 
+  public boolean totalIgual(@Positive @NotNull BigDecimal total) {
+
+    BigDecimal totalCalculado = this.itensColetados.stream().map(ItemPedido::total)
+        .reduce(BigDecimal.ZERO, (atual, proximo) -> atual.add(proximo));
+    System.out.println(totalCalculado.doubleValue());
+    return total.doubleValue() == totalCalculado.doubleValue();
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+  public Compra getCompra() {
+    return compra;
+  }
+
+  public BigDecimal getTotal() {
+    return total;
+  }
+
+  public Set<ItemPedido> getItensColetados() {
+    return itensColetados;
+  }
+
+
 
 }

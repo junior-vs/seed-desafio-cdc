@@ -76,6 +76,54 @@ public class Compra {
     return id;
   }
 
+  public String getEmail() {
+    return email;
+  }
+
+  public String getNome() {
+    return nome;
+  }
+
+  public String getSobrenome() {
+    return sobrenome;
+  }
+
+  public String getDocumento() {
+    return documento;
+  }
+
+  public String getEndereco() {
+    return endereco;
+  }
+
+  public String getComplemento() {
+    return complemento;
+  }
+
+  public String getCidade() {
+    return cidade;
+  }
+
+  public Estado getEstado() {
+    return estado;
+  }
+
+  public Pais getPais() {
+    return pais;
+  }
+
+  public String getTelefone() {
+    return telefone;
+  }
+
+  public String getCep() {
+    return cep;
+  }
+
+  public Pedido getPedido() {
+    return pedido;
+  }
+
 
 
 }

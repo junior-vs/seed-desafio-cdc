@@ -50,7 +50,16 @@ public class PedidoRequestForm {
   public Function<Compra, Pedido> toModel(EntityManager manager) {
     Set<ItemPedido> itensColetados =
         itens.stream().map(item -> item.toModel(manager)).collect(Collectors.toSet());
-    return compra -> new Pedido(compra, itensColetados);
+
+    return compra -> {
+      Pedido pedido = new Pedido(compra, itensColetados);
+      if (!pedido.totalIgual(this.total)) {
+        throw new ArithmeticException("Total Não Corresponde ao calculado");
+      }
+      return pedido;
+
+    };
+
   }
 
 }
