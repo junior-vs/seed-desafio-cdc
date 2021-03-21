@@ -56,6 +56,7 @@ public class CategoriaResource {
    * @param maxResult
    * @return
    */
+  @SuppressWarnings("unchecked")
   @GET
   public Response listAll(@QueryParam("start") final Integer startPosition,
       @QueryParam("max") final Integer maxResult) {
@@ -65,10 +66,10 @@ public class CategoriaResource {
 
     final List<CategoriaVO> categoriasvo =
         resultList.stream().map(CategoriaVO::new).collect(Collectors.toList());
-    
+
     return Response.ok(categoriasvo).build();
   }
 
 
-  
+
 }

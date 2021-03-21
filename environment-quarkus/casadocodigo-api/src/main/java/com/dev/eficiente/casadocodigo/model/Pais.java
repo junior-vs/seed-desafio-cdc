@@ -25,7 +25,10 @@ public class Pais {
     this.nome = nome;
   }
 
-  @Deprecated
+  /**
+   * @deprecated Construtor criado para atendeder Hibernate
+   */
+  @Deprecated(since = "1.0.0")
   public Pais() {
     // Auto-generated constructor stub
   }
@@ -41,5 +44,12 @@ public class Pais {
   public String getNome() {
     return nome;
   }
+
+  @Override
+  public String toString() {
+    return String.format("Pais [id=%s, nome=%s]", id, nome);
+  }
+
+
 
 }

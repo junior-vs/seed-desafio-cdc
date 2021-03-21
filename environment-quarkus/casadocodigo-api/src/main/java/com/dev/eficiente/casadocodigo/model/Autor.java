@@ -27,9 +27,9 @@ public class Autor {
   }
 
   /**
-   * Construtor criado para atendender Hibernate
+   * @deprecated Construtor criado para atendeder Hibernate
    */
-  @Deprecated
+  @Deprecated(since = "1.0")
   public Autor() {
     // Auto-generated constructor stub
   }
@@ -48,6 +48,12 @@ public class Autor {
 
   public String getDescricao() {
     return descricao;
+  }
+
+  @Override
+  public String toString() {
+    return String.format("Autor [id=%s, nome=%s, email=%s, descricao=%s]", id, nome, email,
+        descricao);
   }
 
 

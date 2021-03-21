@@ -57,6 +57,7 @@ public class AutorResource {
    * @param maxResult
    * @return
    */
+  @SuppressWarnings("unchecked")
   @GET
   public Response listAll(@QueryParam("start") final Integer startPosition,
       @QueryParam("max") final Integer maxResult) {
@@ -66,7 +67,7 @@ public class AutorResource {
 
     final List<AutorVO> autoresvo =
         resultList.stream().map(AutorVO::new).collect(Collectors.toList());
-    
+
     return Response.ok(autoresvo).build();
   }
 

@@ -1,9 +1,10 @@
 package com.dev.eficiente;
 
+import io.quarkus.test.junit.QuarkusTest;
+import org.junit.jupiter.api.Test;
+
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
-import org.junit.jupiter.api.Test;
-import io.quarkus.test.junit.QuarkusTest;
 
 @QuarkusTest
 public class GreetingResourceTest {
@@ -12,7 +13,5 @@ public class GreetingResourceTest {
   public void testHelloEndpoint() {
     given().when().get("/hello-resteasy").then().statusCode(200).body(is("Hello RESTEasy"));
   }
-
-
 
 }

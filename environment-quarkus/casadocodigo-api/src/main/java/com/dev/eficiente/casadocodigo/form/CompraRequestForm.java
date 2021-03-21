@@ -1,8 +1,13 @@
 package com.dev.eficiente.casadocodigo.form;
 
+import javax.persistence.EntityManager;
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import com.dev.eficiente.casadocodigo.model.Compra;
+import com.dev.eficiente.casadocodigo.model.Estado;
+import com.dev.eficiente.casadocodigo.model.Pais;
 import com.dev.eficiente.casadocodigo.validations.CPFouCNPJ;
 import com.dev.eficiente.casadocodigo.validations.EstadoPertenceAPais;
 import com.dev.eficiente.casadocodigo.validations.EstadoValido;
@@ -21,7 +26,6 @@ public class CompraRequestForm {
   @NotBlank
   private String sobrenome;
 
-  // CPF ou CNPJ
   @CPFouCNPJ
   private String documento;
 
@@ -47,17 +51,15 @@ public class CompraRequestForm {
   @NotBlank
   private String cep;
 
+  @Valid
+  private PedidoRequestForm pedido;
+
+
   @JsonCreator
-
-
-  public String getEmail() {
-    return email;
-  }
-
   public CompraRequestForm(@Email String email, @NotBlank String nome, @NotBlank String sobrenome,
       @CPFouCNPJ String documento, @NotBlank String endereco, @NotBlank String complemento,
       @EstadoValido Integer idEstado, @NotBlank String cidade, @NotNull @PaisValido Integer idPais,
-      @NotBlank String telefone, @NotBlank String cep) {
+      @NotBlank String telefone, @NotBlank String cep, @Valid PedidoRequestForm pedido) {
     super();
     this.email = email;
     this.nome = nome;
@@ -70,6 +72,11 @@ public class CompraRequestForm {
     this.idPais = idPais;
     this.telefone = telefone;
     this.cep = cep;
+    this.pedido = pedido;
+  }
+
+  public String getEmail() {
+    return email;
   }
 
   public String getNome() {
@@ -112,12 +119,30 @@ public class CompraRequestForm {
     return cep;
   }
 
+  public PedidoRequestForm getPedido() {
+    return pedido;
+  }
+
   @Override
   public String toString() {
     return String.format(
-        "CompraRequestForm [email=%s, nome=%s, sobrenome=%s, documento=%s, endereco=%s, complemento=%s, idEstado=%s, cidade=%s, idPais=%s, telefone=%s, cep=%s]",
+        "CompraRequestForm [email=%s, nome=%s, sobrenome=%s, documento=%s, endereco=%s, complemento=%s, idEstado=%s, cidade=%s, idPais=%s, telefone=%s, cep=%s, pedido=%s]",
         email, nome, sobrenome, documento, endereco, complemento, idEstado, cidade, idPais,
-        telefone, cep);
+        telefone, cep, pedido);
+  }
+
+  public Compra toModel(EntityManager manager) {
+
+    Pais pais = manager.find(Pais.class, this.idPais);
+
+    Compra compra = new Compra(this.email, this.nome, this.sobrenome, this.documento, this.endereco,
+        this.complemento, this.cidade, pais, this.telefone, this.cep, this.pedido.toModel(manager));
+
+    if (this.idEstado != null) {
+      Estado estado = manager.find(Estado.class, this.idEstado);
+      compra.setEstado(estado);
+    }
+    return compra;
   }
 
 

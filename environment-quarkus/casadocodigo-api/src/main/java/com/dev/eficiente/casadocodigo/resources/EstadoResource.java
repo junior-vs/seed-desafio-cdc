@@ -4,9 +4,11 @@
 package com.dev.eficiente.casadocodigo.resources;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.enterprise.context.RequestScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 import javax.ws.rs.GET;
@@ -17,6 +19,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
+import com.dev.eficiente.casadocodigo.domain.EstadoVO;
 import com.dev.eficiente.casadocodigo.form.EstadoRequestForm;
 import com.dev.eficiente.casadocodigo.model.Estado;
 
@@ -54,12 +57,11 @@ public class EstadoResource {
   @GET
   @Path("/{id:[0-9][0-9]*}")
   public Response findById(@PathParam("id") final Long id) {
-    // TODO: retrieve the estadorequestform
-    EstadoRequestForm estadorequestform = null;
-    if (estadorequestform == null) {
+    Estado found = manager.find(Estado.class, id);
+    if (found == null) {
       return Response.status(Status.NOT_FOUND).build();
     }
-    return Response.ok(estadorequestform).build();
+    return Response.ok(new EstadoVO(found)).build();
   }
 
   /**
@@ -67,12 +69,15 @@ public class EstadoResource {
    * @param maxResult
    * @return
    */
+  @SuppressWarnings("unchecked")
   @GET
-  public List<EstadoRequestForm> listAll(@QueryParam("start") final Integer startPosition,
+  public Response listAll(@QueryParam("start") final Integer startPosition,
       @QueryParam("max") final Integer maxResult) {
-    // TODO: retrieve the estadorequestforms
-    final List<EstadoRequestForm> estadorequestforms = null;
-    return estadorequestforms;
+    Query query = manager.createQuery("Select e FROM Estado e");
+    List<Estado> resultList = query.getResultList();
+    final List<EstadoVO> estadorequestforms =
+        resultList.stream().map(EstadoVO::new).collect(Collectors.toList());
+    return Response.ok().entity(estadorequestforms).build();
   }
 
 }

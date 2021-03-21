@@ -30,7 +30,7 @@ import com.dev.eficiente.casadocodigo.model.Livro;
 /**
  * @author Valdir Junior
  *
- * CDD 2
+ *         CDD 2
  */
 @RequestScoped
 @Path("/livros")
@@ -53,8 +53,8 @@ public class LivroResource {
     Livro livroEntity = livro.map(manager);
     manager.persist(livroEntity);
 
-    URI uri = UriBuilder.fromResource(LivroResource.class)
-        .path(String.valueOf(livroEntity.getId())).build();
+    URI uri = UriBuilder.fromResource(LivroResource.class).path(String.valueOf(livroEntity.getId()))
+        .build();
 
     return Response.created(uri).entity(new LivroVO(livroEntity)).build();
   }
@@ -78,6 +78,7 @@ public class LivroResource {
    * @param maxResult
    * @return
    */
+  @SuppressWarnings("unchecked")
   @GET
   public Response listAll(@QueryParam("start") final Integer startPosition,
       @QueryParam("max") final Integer maxResult) {
@@ -87,7 +88,7 @@ public class LivroResource {
 
     final List<LivroVO> livrosvo =
         resultList.stream().map(LivroVO::new).collect(Collectors.toList());
-    
+
     return Response.ok(livrosvo).build();
   }
 

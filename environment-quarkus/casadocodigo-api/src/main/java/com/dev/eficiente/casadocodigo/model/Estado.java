@@ -29,7 +29,10 @@ public class Estado {
     this.pais = pais;
   }
 
-  @Deprecated
+  /**
+   * @deprecated Construtor criado para atendeder Hibernate
+   */
+  @Deprecated(since = "1.0")
   public Estado() {
     // Auto-generated constructor stub
   }
@@ -45,5 +48,12 @@ public class Estado {
   public Pais getPais() {
     return pais;
   }
+
+  @Override
+  public String toString() {
+    return String.format("Estado [id=%s, nome=%s]", id, nome);
+  }
+
+
 
 }

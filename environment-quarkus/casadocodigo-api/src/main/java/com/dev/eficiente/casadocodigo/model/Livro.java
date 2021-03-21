@@ -36,9 +36,9 @@ public class Livro {
   private Autor autor;
 
   /**
-   * Construtor criado para atender Hibernate
+   * @deprecated Construtor criado para atendeder Hibernate
    */
-  @Deprecated
+  @Deprecated(since = "1.0.0")
   public Livro() {
     // Auto-generated constructor stub
   }
@@ -97,6 +97,15 @@ public class Livro {
   public Autor getAutor() {
     return autor;
   }
+
+  @Override
+  public String toString() {
+    return String.format(
+        "Livro [id=%s, titulo=%s, resumo=%s, sumario=%s, preco=%s, numeroPagina=%s, isbn=%s, dtPublicacao=%s, categoria=%s, autor=%s]",
+        id, titulo, resumo, sumario, preco, numeroPagina, isbn, dtPublicacao, categoria, autor);
+  }
+  
+  
 
 
 
