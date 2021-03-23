@@ -13,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 public class CupomRequestForm {
 
   @NotBlank
+  @CupomUnico
   private String codigo;
 
   @Max(100)

@@ -1,7 +1,9 @@
 package com.dev.eficiente.casadocodigo.model;
 
+import java.math.BigDecimal;
 import java.util.function.Function;
 import javax.persistence.CascadeType;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -35,6 +37,11 @@ public class Compra {
   @OneToOne(mappedBy = "compra", cascade = CascadeType.PERSIST)
   private Pedido pedido;
 
+  private BigDecimal totalCobrado;
+
+  @Embedded
+  private CupomApliado cupomAplicado;
+
   public Compra(@Email String email, @NotBlank String nome, @NotBlank String sobrenome,
       @CPFouCNPJ String documento, @NotBlank String endereco, @NotBlank String complemento,
       @NotBlank String cidade, Pais pais, @NotBlank String telefone, @NotBlank String cep,
@@ -50,6 +57,19 @@ public class Compra {
     this.telefone = telefone;
     this.cep = cep;
     this.pedido = funcaoCriacaoPedido.apply(this);
+    this.totalCobrado = calculaTotalACobrar(pedido.getTotal());
+
+  }
+
+  private BigDecimal calculaTotalACobrar(BigDecimal total) {
+
+    int desconto =
+        (this.cupomAplicado == null) ? 0 : this.cupomAplicado.getDescontoAplicadoMomento();
+
+    BigDecimal t1 = total.multiply(new BigDecimal(desconto));
+    BigDecimal t2 = t1.divide(new BigDecimal(100));
+    return total.subtract(t2);
+
   }
 
   /**
@@ -122,6 +142,19 @@ public class Compra {
 
   public Pedido getPedido() {
     return pedido;
+  }
+
+  public BigDecimal getTotalCobrado() {
+    return totalCobrado;
+  }
+
+  public void apicaCupom(Cupom cupom) {
+
+    if (!cupom.valido()) {
+      throw new IllegalArgumentException("cupom Não é valido");
+    }
+    this.cupomAplicado = new CupomApliado(cupom);
+    this.totalCobrado = calculaTotalACobrar(pedido.getTotal());
   }
 
 

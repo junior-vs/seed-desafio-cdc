@@ -43,10 +43,13 @@ public class CompraResource {
     manager.persist(compraEntity);
 
 
-    URI path =
-        UriBuilder.fromResource(Compra.class).path(String.valueOf(compraEntity.getId())).build();
-
-    return Response.created(path).entity(new CompraVO(compraEntity)).build();
+    /*
+     * URI path =
+     * UriBuilder.fromResource(Compra.class).path(String.valueOf(compraEntity.getId())).build();
+     */
+    return Response.ok().entity(new CompraVO(compraEntity)).build();
+    
+    //return Response.ok().build();
   }
 
   @GET

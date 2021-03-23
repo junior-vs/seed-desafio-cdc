@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -35,7 +36,7 @@ public class CupomResource {
   @Produces({MediaType.APPLICATION_JSON})
   @Consumes({MediaType.APPLICATION_JSON})
   @Transactional
-  public Response create(final CupomRequestForm cupom) {
+  public Response create(@Valid final CupomRequestForm cupom) {
 
     Cupom entity = cupom.toMode();
     manager.persist(entity);
