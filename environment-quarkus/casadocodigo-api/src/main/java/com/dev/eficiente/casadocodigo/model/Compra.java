@@ -148,6 +148,10 @@ public class Compra {
     return totalCobrado;
   }
 
+  public CupomApliado getCupomAplicado() {
+    return cupomAplicado;
+  }
+
   public void apicaCupom(Cupom cupom) {
 
     if (!cupom.valido()) {

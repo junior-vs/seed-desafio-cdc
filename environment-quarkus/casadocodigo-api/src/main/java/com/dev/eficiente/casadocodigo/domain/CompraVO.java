@@ -1,5 +1,6 @@
 package com.dev.eficiente.casadocodigo.domain;
 
+import java.math.BigDecimal;
 import com.dev.eficiente.casadocodigo.model.Compra;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
@@ -18,6 +19,9 @@ public class CompraVO {
   private PaisVO pais;
   private String cep;
   private PedidoVO pedido;
+  private BigDecimal totalCobrado;
+  private CupomApliadoVO cupomAplicado;
+
 
   @JsonCreator
   public CompraVO(Compra compra) {
@@ -34,6 +38,8 @@ public class CompraVO {
     telefone = compra.getTelefone();
     estado = new EstadoVO(compra.getEstado());
     pedido = new PedidoVO(compra.getPedido());
+    totalCobrado = compra.getTotalCobrado();
+    cupomAplicado = new CupomApliadoVO(compra.getCupomAplicado());
   }
 
   public Long getId() {
@@ -86,6 +92,14 @@ public class CompraVO {
 
   public PedidoVO getPedido() {
     return pedido;
+  }
+
+  public BigDecimal getTotalCobrado() {
+    return totalCobrado;
+  }
+
+  public CupomApliadoVO getCupomAplicado() {
+    return cupomAplicado;
   }
 
   @Override
