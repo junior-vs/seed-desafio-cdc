@@ -1,4 +1,4 @@
-package com.dev.eficiente.resteasyjackson;
+package com.dev.eficiente.casadocodigo.configs;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
