@@ -7,7 +7,8 @@ public class CupomApliadoVO {
   private Integer desconto;
 
   public CupomApliadoVO(CupomApliado cupomAplicado) {
-    desconto = cupomAplicado.getDescontoAplicadoMomento();
+
+    desconto = (cupomAplicado == null) ? null : cupomAplicado.getDescontoAplicadoMomento();
 
   }
 

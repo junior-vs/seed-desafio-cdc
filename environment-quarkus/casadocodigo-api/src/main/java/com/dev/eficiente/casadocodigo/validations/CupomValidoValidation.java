@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import com.dev.eficiente.casadocodigo.model.Cupom;
 
 @ApplicationScoped
 public class CupomValidoValidation implements ConstraintValidator<CupomValido, String> {
@@ -16,6 +17,7 @@ public class CupomValidoValidation implements ConstraintValidator<CupomValido, S
   @PersistenceContext
   EntityManager manager;
 
+  @SuppressWarnings("unchecked")
   @Override
   public boolean isValid(String value, ConstraintValidatorContext context) {
     
@@ -26,7 +28,7 @@ public class CupomValidoValidation implements ConstraintValidator<CupomValido, S
         .createQuery("Select c from Cupom c where c.codigo = :value and c.validade >= :validade");
     query.setParameter("value", value);
     query.setParameter("validade", LocalDate.now());
-    List resultList = query.getResultList();
+    List<Cupom> resultList = query.getResultList();
     return !resultList.isEmpty();
   }
 
